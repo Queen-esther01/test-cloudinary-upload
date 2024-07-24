@@ -5,6 +5,7 @@ export type ButtonType = {
     onClick?: () => void 
     loading?: boolean
     type?: 'button' | 'submit'
+    className?: string
 }
 
 export type ImageDetailsType = {
@@ -12,13 +13,18 @@ export type ImageDetailsType = {
     url: string
 }
 
-export interface ModalType {
+export type ModalType = {
     children?: JSX.Element | JSX.Element[],
     onClose: () => void,
     className?: string,
     open?: boolean
 }
 
-export interface FileInputType {
+export type FileInputType = {
     onFileSelect: (e:React.ChangeEvent<HTMLInputElement>) => void
+}
+
+export type ImageDetailsComponent = {
+    image: ImageDetailsType 
+    handleDeleteImage: (data:ImageDetailsType) => void
 }

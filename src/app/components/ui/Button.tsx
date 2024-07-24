@@ -2,9 +2,9 @@ import { ButtonType } from "@/app/typings/components"
 import Loader from "./Loader"
 
 
-const Button = ({ children, onClick, outline=false, loading=false, type='button' }: ButtonType) => {
+const Button = ({ children, onClick, outline=false, loading=false, type='button', className }: ButtonType) => {
     return (
-        <button data-testid='button' className={`${outline ? 'outline-button' : 'fill-button'} button `} onClick={onClick} type={type}>
+        <button data-testid='button' className={`${outline ? 'outline-button' : 'fill-button'} ${className} button `} onClick={onClick} type={type}>
             { loading ? <Loader/> : children }
         </button>
     )
