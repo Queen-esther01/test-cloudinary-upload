@@ -23,4 +23,4 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 - React-Query was used to fetch data & server side state such as loading, error etc. This is a preferable tool compared to redux because it is robust and has so many benefits such as caching, data refetching & cache invalidation.
 - Image data is being stored in local storage as requested, ideally this should be information stored on the server side, fetched once on the client, cached and invalidated as necesary.
 - I wrote some unit and integration tests using vitest.
-
+- Information such as the BASE_URL is contained in environment variables to enable easy change of values depending on environment.
