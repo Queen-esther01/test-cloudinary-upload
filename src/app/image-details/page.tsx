@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 import { ImageDetailsType } from "../typings/components";
 import ImageDetail from "./components/ImageDetail";
+import Loader from "../components/ui/Loader";
 
-const AllImages = () => {
+export default function AllImages() {
 
-    const localImages = JSON.parse(global.localStorage.getItem('CloudinaryImages')!)
-    const [images, setImages] = useState(localImages || '')
+    const [images, setImages] = useState([])
+    const [loadingPage, setLoadingPage] = useState(false)
     
     useEffect(() => {
 
@@ -27,11 +28,35 @@ const AllImages = () => {
             window.removeEventListener('storage', updateValue);
             window.removeEventListener('localStorageUpdate', updateValue);
         };
-      });
+    });
+
+    useEffect(() => {
+        setLoadingPage(true)
+        if(typeof window !== 'undefined'){
+            setImages(JSON.parse(localStorage.getItem('CloudinaryImages')!))
+        }else{
+            setImages([])
+        }
+        setLoadingPage(false)
+    }, [])
+
+    const handleDeleteImage = (imageData:ImageDetailsType) => {
+        const allLocalImages = JSON.parse(localStorage.getItem('CloudinaryImages')!)
+        let filtered = allLocalImages.filter((image:ImageDetailsType) => image.url !== imageData.url)
+        setImages(filtered)
+        localStorage.setItem('CloudinaryImages', JSON.stringify(filtered))
+    }
+    
 
     return (
         <div className="">
-             {
+            {
+                loadingPage &&
+                <div className="mt-10">
+                    <Loader/>
+                </div>
+            }
+            {
                 !images && <div className="my-32 w-full text-center text-white">No Images Uploaded Yet!</div>
             }
             {
@@ -39,7 +64,7 @@ const AllImages = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-between gap-5 mt-12 md:px-10 w-full max-w-5xl mx-auto">
                     {
                         images.map((image:ImageDetailsType) => (
-                            <ImageDetail key={image.url} image={image}/>
+                            <ImageDetail handleDeleteImage={handleDeleteImage} key={image.url} image={image}/>
                         ))
                     }
                 </div>
@@ -47,5 +72,3 @@ const AllImages = () => {
         </div>
     );
 }
-
-export default AllImages;

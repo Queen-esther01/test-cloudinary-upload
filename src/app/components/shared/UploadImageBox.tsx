@@ -1,5 +1,3 @@
-"use client"
-
 import { useUploadMutation } from "@/app/hooks/useUploadMutation"
 import ImageLoader from "@/app/utils/loader"
 import Image from "next/image"
