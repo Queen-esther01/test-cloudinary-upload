@@ -7,7 +7,7 @@ import FileInput from "../form/FileInput"
 
 const UploadImageBox = ({ callback }:{ callback?: () => void }) => {
 
-    const [imageFile, setImageFile] = useState<File>()
+    const [imageFile, setImageFile] = useState<File | null>(null)
     const [imageSrc, setImageSrc] = useState('')
 
 	const inputRef:ForwardedRef<HTMLInputElement> = useRef(null)
@@ -33,7 +33,7 @@ const UploadImageBox = ({ callback }:{ callback?: () => void }) => {
 
 	const resetState = () => {
 		setImageSrc('')
-		setImageFile(undefined)
+		setImageFile(null)
         callback && callback()
 	}
 
@@ -46,10 +46,15 @@ const UploadImageBox = ({ callback }:{ callback?: () => void }) => {
 		uploadImageMutation.mutate(formData)
 	}
 
+    const removeFile = () => {
+        setImageFile(null)
+        setImageSrc('')
+    }
 
     return (
         <>
-            <div onClick={uploadFile} className='cursor-pointer mt-5 md:mt-20 max-w-lg mx-auto w-full border border-white border-dashed h-[350px] rounded-md flex flex-col justify-center items-center '>
+            { imageSrc && imageFile && <span onClick={removeFile} className="text-red  cursor-pointer  mb-2">Remove File</span>}
+            <div onClick={uploadFile} className='relative cursor-pointer md:mt-20 max-w-lg mx-auto w-full border border-white border-dashed h-[350px] rounded-md flex flex-col justify-center items-center '>
                 { !imageSrc && <p className='mb-5'>Click to select images</p>}
                 <FileInput ref={inputRef} onFileSelect={onFileSelect}/>
 				{
@@ -64,7 +69,7 @@ const UploadImageBox = ({ callback }:{ callback?: () => void }) => {
 			</div>
 			{
 				imageSrc &&
-				<div className='flex justify-center gap-5 mt-10 mb-52'>
+				<div className='flex justify-center gap-5 my-10'>
 					<Button outline={true} onClick={uploadFile} >
 						Change Image
 					</Button> 
