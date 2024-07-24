@@ -61,7 +61,7 @@ export default function AllImages() {
             }
             {
                 images &&
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-between gap-5 mt-12 md:px-10 w-full max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-between gap-5 mt-12 md:px-10 md:mb-20 w-full max-w-5xl mx-auto">
                     {
                         images.map((image:ImageDetailsType) => (
                             <ImageDetail handleDeleteImage={handleDeleteImage} key={image.url} image={image}/>
