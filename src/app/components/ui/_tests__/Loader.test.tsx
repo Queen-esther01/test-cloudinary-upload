@@ -8,7 +8,9 @@ const queryClient = new QueryClient()
 describe('Loader Component', () => {
 
 	render(<QueryClientProvider client={queryClient}>
-		<Button children={'View Images'} loading={true}/>
+		<Button loading={true}>
+			View Images
+		</Button>
 	</QueryClientProvider>)
 
 	test('Loader shows on button', () => {

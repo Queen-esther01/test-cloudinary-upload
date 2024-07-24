@@ -10,7 +10,9 @@ describe('Button Component', () => {
     const triggerButton = vi.fn()
 
 	render(<QueryClientProvider client={queryClient}>
-		<Button children={'View Images'} onClick={triggerButton} loading={false}/>
+		<Button onClick={triggerButton} loading={false}>
+			View Images
+		</Button>
 	</QueryClientProvider>)
 
 	test('Button is rendered and default type is button', () => {
