@@ -33,6 +33,8 @@ describe('Image Details', () => {
             expect(images.length).toBe(1)
             expect(images[0].original_filename).toBe('Balloons.jpg')
             expect(imageName).toBeDefined()
+            const buttons = screen.getAllByRole('button')
+            expect(buttons.length).toBe(1)
         }
     });
 })
