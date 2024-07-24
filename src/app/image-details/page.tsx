@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ImageDetailsType } from "../typings/components";
 import ImageDetail from "./components/ImageDetail";
 
-const AllImages = () => {
+export default function AllImages() {
 
     const localImages = JSON.parse(global.localStorage.getItem('CloudinaryImages')!)
     const [images, setImages] = useState(localImages || '')
@@ -47,5 +47,3 @@ const AllImages = () => {
         </div>
     );
 }
-
-export default AllImages;
