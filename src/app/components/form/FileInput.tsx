@@ -7,4 +7,5 @@ const FileInput = React.forwardRef(({ onFileSelect }:FileInputType, ref:Forwarde
     );
 })
 
+FileInput.displayName = 'FileInput'
 export default FileInput;
