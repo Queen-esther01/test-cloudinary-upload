@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <footer className='text-center mb-2 mt-20 py-5 md:fixed md:bottom-0 md:right-0 md:left-0 bg-darkGray'>
+        <footer className='text-center mt-20 py-5 md:fixed md:bottom-0 md:right-0 md:left-0 bg-darkGray'>
             <p>Built with Nextjs &copy; { new Date().getFullYear()}</p>
         </footer>
     );
