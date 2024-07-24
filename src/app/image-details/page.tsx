@@ -6,15 +6,14 @@ import ImageDetail from "./components/ImageDetail";
 
 const AllImages = () => {
 
-    
-
-    const [images, setImages] = useState(JSON.parse(localStorage.getItem('CloudinaryImages')!) || '')
+    const localImages = JSON.parse(global.localStorage.getItem('CloudinaryImages')!)
+    const [images, setImages] = useState(localImages || '')
     
     useEffect(() => {
 
         // Update state with new value from localStorage
         const updateValue = () => {
-            setImages(JSON.parse(localStorage.getItem('CloudinaryImages')!));
+            setImages(JSON.parse(global.localStorage.getItem('CloudinaryImages')!));
         };
     
         // Listen for storage events (from other tabs/windows)
