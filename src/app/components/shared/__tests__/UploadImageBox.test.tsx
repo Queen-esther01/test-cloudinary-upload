@@ -12,7 +12,7 @@ describe('Upload Box Component', () => {
 		<UploadImageBox/>
 	</QueryClientProvider>)
 
-    test('After upload, respective buttons show up', async() => {
+    test('After upload, respective buttons and options show up', async() => {
         const file = new File(['test-image'], 'bird.jpg', { type: 'image/jpg' })
         const fileInput:any = screen.getByTestId('file-upload')
 
@@ -31,6 +31,8 @@ describe('Upload Box Component', () => {
         expect(changeImageButton).toBeDefined()
         const uploadImageButton = await screen.findByText('Upload To Cloudinary')
         expect(uploadImageButton).toBeDefined()
+        const removeFileText = screen.getByText('Remove File')
+        expect(removeFileText).toBeDefined()
     });
 })
 

@@ -19,6 +19,7 @@ const config: Config = {
       divider: '#cbd5e1',
       darkGray: '#0f172a',
       transparent: 'transparent',
+      red: '#b91c1c'
     }
   },
   plugins: [],
