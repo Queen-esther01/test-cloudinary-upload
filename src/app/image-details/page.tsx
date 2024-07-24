@@ -6,8 +6,7 @@ import ImageDetail from "./components/ImageDetail";
 
 export default function AllImages() {
 
-    const localImages = JSON.parse(global.localStorage.getItem('CloudinaryImages')!)
-    const [images, setImages] = useState(localImages || '')
+    const [images, setImages] = useState([])
     
     useEffect(() => {
 
@@ -27,7 +26,16 @@ export default function AllImages() {
             window.removeEventListener('storage', updateValue);
             window.removeEventListener('localStorageUpdate', updateValue);
         };
-      });
+    });
+
+    useEffect(() => {
+        if(typeof window !== 'undefined'){
+            setImages(JSON.parse(localStorage.getItem('CloudinaryImages')!))
+        }else{
+            setImages([])
+        }
+    }, [])
+    
 
     return (
         <div className="">
