@@ -53,8 +53,8 @@ const UploadImageBox = ({ callback }:{ callback?: () => void }) => {
 
     return (
         <>
-            { imageSrc && imageFile && <span onClick={removeFile} className="text-red  cursor-pointer  mb-2">Remove File</span>}
-            <div onClick={uploadFile} className='relative cursor-pointer md:mt-20 max-w-lg mx-auto w-full border border-white border-dashed h-[350px] rounded-md flex flex-col justify-center items-center '>
+            { imageSrc && imageFile && <span onClick={removeFile} className="md:mt-20 text-red  cursor-pointer  mb-2">Remove File</span>}
+            <div onClick={uploadFile} className='relative cursor-pointer  max-w-lg mx-auto w-full border border-white border-dashed h-[350px] rounded-md flex flex-col justify-center items-center '>
                 { !imageSrc && <p className='mb-5'>Click to select images</p>}
                 <FileInput ref={inputRef} onFileSelect={onFileSelect}/>
 				{
